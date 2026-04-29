@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --fg: #f5f0e8;
+      --accent: #c8a96e;
+      --muted: #555;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Radial glow background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, #1a1408 0%, #0d0d0d 100%);
+      z-index: 0;
+    }
+
+    /* Noise overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      z-index: 0;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      animation: fadeUp 1.2s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    h1 span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--accent);
+      margin: 2rem auto;
+      animation: expandWidth 1s 0.7s ease both;
+      transform-origin: center;
+    }
+
+    @keyframes expandWidth {
+      from { width: 0; opacity: 0; }
+      to   { width: 60px; opacity: 1; }
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #999;
+      max-width: 360px;
+      line-height: 1.8;
+      animation: fadeUp 1.2s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--muted);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      animation: fadeUp 1.2s 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* Decorative corner lines */
+    .corner {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      z-index: 1;
+      opacity: 0.25;
+    }
+    .corner--tl { top: 2rem; left: 2rem; border-top: 1px solid var(--accent); border-left: 1px solid var(--accent); }
+    .corner--tr { top: 2rem; right: 2rem; border-top: 1px solid var(--accent); border-right: 1px solid var(--accent); }
+    .corner--bl { bottom: 2rem; left: 2rem; border-bottom: 1px solid var(--accent); border-left: 1px solid var(--accent); }
+    .corner--br { bottom: 2rem; right: 2rem; border-bottom: 1px solid var(--accent); border-right: 1px solid var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="corner corner--tl"></div>
+  <div class="corner corner--tr"></div>
+  <div class="corner corner--bl"></div>
+  <div class="corner corner--br"></div>
+
+  <div class="container">
+    <p class="eyebrow">Something is brewing</p>
+    <h1>Coming<br /><span>Soon.</span></h1>
+    <div class="divider"></div>
+    <p>We're putting the finishing touches on something worth waiting for. Check back soon.</p>
+    <div class="badge">Launching Soon</div>
+  </div>
+</body>
+</html>
